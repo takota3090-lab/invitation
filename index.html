@@ -6,7 +6,7 @@
     <meta name="theme-color" content="#fff5f0">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>دعوة عشاء | منيرة الحربي</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Amiri:wght@400;600;700;800&family=Tajawal:wght@400;500;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Amiri:wght@400;600;700;800&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,7 +16,7 @@
         }
 
         body {
-            font-family: 'Cairo', 'Amiri', 'Tajawal', system-ui, sans-serif;
+            font-family: 'Cairo', 'Amiri', system-ui, sans-serif;
             background: #ffffff;
             height: 100vh;
             width: 100%;
@@ -67,16 +67,6 @@
             justify-content: center;
         }
 
-        /* Header Icon */
-        .header-icon {
-            text-align: center;
-            margin-bottom: 16px;
-        }
-
-        .header-icon span {
-            font-size: 3rem;
-        }
-
         /* Title - Premium Font */
         .title {
             text-align: center;
@@ -89,7 +79,6 @@
             font-family: 'Playfair Display', 'Amiri', serif;
             color: #d4a5a5;
             letter-spacing: 1px;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.02);
         }
 
         /* Host Name */
@@ -242,7 +231,7 @@
             margin-top: 4px;
         }
 
-        /* Location Section - Beige Fill, Light Pink Border */
+        /* Location Section */
         .location-section {
             background: #fdf8f5;
             border-radius: 32px;
@@ -257,17 +246,10 @@
             margin-bottom: 8px;
         }
 
-        .city-name {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #c4a5a5;
-            margin-bottom: 4px;
-        }
-
         .address {
             font-size: 0.7rem;
             color: #a5a5a5;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             line-height: 1.5;
         }
 
@@ -338,30 +320,6 @@
         .footer p {
             font-size: 0.6rem;
             color: #c4c4c4;
-        }
-
-        /* Sound Toggle */
-        .sound-toggle {
-            position: fixed;
-            bottom: 15px;
-            left: 15px;
-            background: #fff5f0;
-            border: 1px solid #f5e0e0;
-            border-radius: 50px;
-            padding: 6px 14px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            cursor: pointer;
-            z-index: 100;
-            font-family: 'Cairo', sans-serif;
-            font-size: 0.65rem;
-            color: #c4a5a5;
-            transition: all 0.2s;
-        }
-
-        .sound-toggle:active {
-            transform: scale(0.95);
         }
 
         /* Toast */
@@ -449,12 +407,6 @@
                 padding: 10px;
                 margin: 6px 0;
             }
-            .header-icon {
-                margin-bottom: 8px;
-            }
-            .header-icon span {
-                font-size: 2.5rem;
-            }
             .title h1 {
                 font-size: 1.7rem;
             }
@@ -471,11 +423,6 @@
     <div class="full-screen">
         <div class="invitation-card">
             <div class="content">
-                <!-- Header Icon -->
-                <div class="header-icon">
-                    <span>🍽️✨</span>
-                </div>
-
                 <!-- Title - Premium Font -->
                 <div class="title">
                     <h1>دعوة عشاء</h1>
@@ -536,8 +483,7 @@
                 <!-- Location Section -->
                 <div class="location-section">
                     <div class="location-icon">📍</div>
-                    <div class="city-name">مدينة الدمام</div>
-                    <div class="address">حي الشاطئ، شارع الأمير محمد بن فهد</div>
+                    <div class="address">حي الشاطئ، شارع الأمير محمد بن فهد، الدمام</div>
                 </div>
 
                 <!-- Action Buttons -->
@@ -563,88 +509,14 @@
         </div>
     </div>
 
-    <!-- Sound Toggle -->
-    <div class="sound-toggle" id="soundToggle">
-        <span>🔊</span>
-        <span>المؤثرات</span>
-    </div>
-
     <div id="toast" class="toast"></div>
 
     <script>
-        // ==================== Sound System ====================
-        let soundEnabled = true;
-        let audioCtx = null;
-
-        function initAudio() {
-            if (!audioCtx && (window.AudioContext || window.webkitAudioContext)) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            }
-        }
-
-        function playSound(type) {
-            if (!soundEnabled) return;
-            initAudio();
-            if (!audioCtx) return;
-            
-            try {
-                const oscillator = audioCtx.createOscillator();
-                const gainNode = audioCtx.createGain();
-                oscillator.connect(gainNode);
-                gainNode.connect(audioCtx.destination);
-                gainNode.gain.value = 0.2;
-                
-                if (type === 'click') {
-                    oscillator.frequency.value = 800;
-                    oscillator.type = 'sine';
-                    oscillator.start();
-                    gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.1);
-                    oscillator.stop(audioCtx.currentTime + 0.1);
-                } else if (type === 'open') {
-                    oscillator.frequency.value = 523.25;
-                    oscillator.type = 'sine';
-                    oscillator.start();
-                    gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.4);
-                    oscillator.stop(audioCtx.currentTime + 0.4);
-                    setTimeout(() => {
-                        const osc2 = audioCtx.createOscillator();
-                        const gain2 = audioCtx.createGain();
-                        osc2.connect(gain2);
-                        gain2.connect(audioCtx.destination);
-                        osc2.frequency.value = 659.25;
-                        osc2.type = 'sine';
-                        gain2.gain.value = 0.12;
-                        osc2.start();
-                        gain2.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.3);
-                        osc2.stop(audioCtx.currentTime + 0.3);
-                    }, 100);
-                } else if (type === 'share') {
-                    oscillator.frequency.value = 650;
-                    oscillator.type = 'sine';
-                    oscillator.start();
-                    gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.2);
-                    oscillator.stop(audioCtx.currentTime + 0.2);
-                }
-            } catch(e) { console.log('Audio error'); }
-        }
-
-        // Enable audio on first touch
-        const enableAudio = () => {
-            initAudio();
-            if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
-            playSound('open');
-            document.removeEventListener('touchstart', enableAudio);
-            document.removeEventListener('click', enableAudio);
-        };
-        document.addEventListener('touchstart', enableAudio);
-        document.addEventListener('click', enableAudio);
-
         // ==================== Google Maps Link ====================
         const mapsLink = "https://www.google.com/maps/search/الدمام+حي+الشاطئ+شارع+الأمير+محمد+بن+فهد";
 
         // ==================== Share Invitation ====================
         function shareInvitation() {
-            playSound('share');
             const shareText = `🍽️ دعوة عشاء من منيرة الحربي\n\nيسرني دعوتكم لحضور عشاء خاص في منزلي\n📍 الدمام، حي الشاطئ، شارع الأمير محمد بن فهد\n📅 ${document.getElementById('event-date').textContent}\n⏰ 8:00 مساءً\n\nنتمنى تشريفكم 🌟`;
             
             if (navigator.share) {
@@ -721,7 +593,6 @@
 
         // ==================== Open Map ====================
         function openMap() {
-            playSound('click');
             window.open(mapsLink, '_blank');
             setTimeout(() => showToast('🗺️ تم فتح خرائط جوجل'), 100);
         }
@@ -735,14 +606,7 @@
             document.getElementById('map-button').addEventListener('click', openMap);
             document.getElementById('share-button').addEventListener('click', shareInvitation);
             
-            const soundToggle = document.getElementById('soundToggle');
-            soundToggle.addEventListener('click', () => {
-                soundEnabled = !soundEnabled;
-                soundToggle.innerHTML = soundEnabled ? '<span>🔊</span><span>المؤثرات</span>' : '<span>🔇</span><span>كتم</span>';
-                if (soundEnabled) playSound('click');
-            });
-            
-            const buttons = document.querySelectorAll('.map-btn, .share-btn, .sound-toggle');
+            const buttons = document.querySelectorAll('.map-btn, .share-btn');
             buttons.forEach(btn => {
                 btn.addEventListener('touchstart', function() { this.style.transform = 'scale(0.96)'; });
                 btn.addEventListener('touchend', function() { this.style.transform = ''; });
