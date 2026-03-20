@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#0f0c1a">
+    <meta name="theme-color" content="#2c1810">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>دعوة عشاء | منيرة الحربي</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Amiri:wght@400;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -17,16 +17,26 @@
 
         body {
             font-family: 'Cairo', 'Amiri', 'Tajawal', system-ui, sans-serif;
-            background: linear-gradient(145deg, #0a0a1a 0%, #1a1a2e 50%, #0f0f1f 100%);
+            background: linear-gradient(145deg, #2c1810 0%, #3a2a1f 50%, #2a1e15 100%);
             height: 100vh;
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 12px;
+            padding: 0;
             position: fixed;
             top: 0;
             left: 0;
+            overflow: hidden;
+        }
+
+        /* Full Screen Container */
+        .full-screen {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             overflow: hidden;
         }
 
@@ -43,7 +53,7 @@
 
         .particle {
             position: absolute;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.4) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(232, 170, 120, 0.4) 0%, transparent 70%);
             border-radius: 50%;
             animation: floatParticle 8s infinite ease-in-out;
         }
@@ -53,25 +63,26 @@
             50% { transform: translateY(-40px) translateX(20px) scale(1.2); opacity: 0.6; }
         }
 
-        .gold-orb {
+        .warm-orb {
             position: fixed;
             top: 20%;
             right: -15%;
             width: 300px;
             height: 300px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(232, 170, 120, 0.2) 0%, transparent 70%);
             border-radius: 50%;
             filter: blur(60px);
             animation: pulseOrb 6s infinite;
             z-index: 0;
         }
 
-        .gold-orb-2 {
+        .warm-orb-2 {
             bottom: 10%;
             left: -15%;
             top: auto;
             width: 280px;
             height: 280px;
+            background: radial-gradient(circle, rgba(210, 130, 80, 0.2) 0%, transparent 70%);
             animation: pulseOrb 8s infinite reverse;
         }
 
@@ -80,19 +91,19 @@
             50% { opacity: 0.8; transform: scale(1.1); }
         }
 
-        /* Main Container - Fixed Height No Scroll */
+        /* Main Container - Full Screen Fit */
         .invitation-card {
             position: relative;
             z-index: 10;
-            width: 100%;
+            width: 94%;
             max-width: 480px;
             height: auto;
-            max-height: 98vh;
-            background: rgba(30, 30, 50, 0.85);
+            max-height: 96vh;
+            background: linear-gradient(145deg, rgba(45, 30, 22, 0.92), rgba(35, 22, 16, 0.96));
             backdrop-filter: blur(20px);
             border-radius: 56px;
-            border: 1px solid rgba(212, 175, 55, 0.4);
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 215, 120, 0.1);
+            border: 1px solid rgba(232, 170, 120, 0.5);
+            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(232, 170, 120, 0.15);
             overflow-y: auto;
             overflow-x: hidden;
             scrollbar-width: none;
@@ -104,8 +115,8 @@
         }
 
         @keyframes cardGlow {
-            0%, 100% { box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 215, 120, 0.1); }
-            50% { box-shadow: 0 40px 60px rgba(212, 175, 55, 0.2), inset 0 1px 0 rgba(255, 215, 120, 0.2); }
+            0%, 100% { box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(232, 170, 120, 0.15); }
+            50% { box-shadow: 0 40px 60px rgba(232, 170, 120, 0.25), inset 0 1px 0 rgba(232, 170, 120, 0.25); }
         }
 
         @keyframes slideUp {
@@ -116,19 +127,19 @@
         /* Gold Lines */
         .gold-line {
             height: 3px;
-            background: linear-gradient(90deg, transparent, #d4af37, #f5da9e, #d4af37, transparent);
+            background: linear-gradient(90deg, transparent, #e8aa78, #f5c396, #e8aa78, transparent);
             width: 100%;
         }
 
-        /* Content - Compact Layout */
+        /* Content */
         .content {
-            padding: 20px 20px 24px;
+            padding: 18px 18px 22px;
         }
 
         /* Header Icon */
         .header-icon {
             text-align: center;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             animation: bounceIcon 2s infinite;
         }
 
@@ -138,8 +149,8 @@
         }
 
         .header-icon span {
-            font-size: 3rem;
-            filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.4));
+            font-size: 2.8rem;
+            filter: drop-shadow(0 4px 12px rgba(232, 170, 120, 0.5));
         }
 
         /* Title */
@@ -148,10 +159,10 @@
         }
 
         .title h1 {
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             font-weight: 800;
             font-family: 'Amiri', 'Tajawal', serif;
-            background: linear-gradient(135deg, #f5da9e, #e8c97a, #d4ae5a);
+            background: linear-gradient(135deg, #f5c396, #e8aa78, #d48c5a);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -159,24 +170,24 @@
         }
 
         @keyframes titleGlow {
-            0%, 100% { text-shadow: 0 0 5px rgba(212, 175, 55, 0.3); }
-            50% { text-shadow: 0 0 15px rgba(212, 175, 55, 0.6); }
+            0%, 100% { text-shadow: 0 0 5px rgba(232, 170, 120, 0.3); }
+            50% { text-shadow: 0 0 15px rgba(232, 170, 120, 0.6); }
         }
 
         /* Host Name */
         .host-name {
             text-align: center;
-            margin: 6px 0 8px;
+            margin: 4px 0 6px;
         }
 
         .host-name p {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            color: #e8c97a;
+            color: #e8aa78;
             letter-spacing: 1px;
             position: relative;
             display: inline-block;
-            padding: 0 20px;
+            padding: 0 18px;
         }
 
         .host-name p::before,
@@ -185,62 +196,108 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            color: #d4af37;
-            font-size: 0.7rem;
+            color: #e8aa78;
+            font-size: 0.65rem;
         }
 
         .host-name p::before {
-            right: -12px;
+            right: -10px;
         }
 
         .host-name p::after {
-            left: -12px;
+            left: -10px;
         }
 
         .subtitle {
             text-align: center;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
 
         .subtitle p {
-            color: rgba(255, 255, 255, 0.65);
-            font-size: 0.75rem;
+            color: rgba(245, 195, 150, 0.8);
+            font-size: 0.7rem;
         }
 
-        /* Invitation Message - Compact */
+        /* Invitation Message */
         .message {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(232, 170, 120, 0.08);
             border-radius: 28px;
-            padding: 14px 16px;
-            margin: 12px 0;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 12px 14px;
+            margin: 10px 0;
+            border: 1px solid rgba(232, 170, 120, 0.35);
             text-align: center;
         }
 
         .message h2 {
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 700;
-            color: #f5da9e;
-            margin-bottom: 6px;
+            color: #f5c396;
+            margin-bottom: 5px;
         }
 
         .message p {
-            font-size: 0.8rem;
-            line-height: 1.5;
-            color: #e8f0e8;
+            font-size: 0.75rem;
+            line-height: 1.45;
+            color: #f0dfce;
         }
 
-        /* Date & Time Section - Compact */
-        .datetime-section {
-            background: rgba(212, 175, 55, 0.1);
+        /* Countdown Timer */
+        .countdown-section {
+            background: rgba(232, 170, 120, 0.08);
             border-radius: 24px;
-            padding: 12px 16px;
-            margin: 12px 0;
-            border: 1px solid rgba(212, 175, 55, 0.4);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid rgba(232, 170, 120, 0.4);
+            text-align: center;
+        }
+
+        .countdown-title {
+            font-size: 0.7rem;
+            color: rgba(245, 195, 150, 0.7);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .countdown-item {
+            text-align: center;
+            min-width: 55px;
+        }
+
+        .countdown-number {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #f5c396;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 6px 10px;
+            border-radius: 16px;
+            font-family: monospace;
+            letter-spacing: 2px;
+        }
+
+        .countdown-label {
+            font-size: 0.55rem;
+            color: rgba(245, 195, 150, 0.6);
+            margin-top: 4px;
+        }
+
+        /* Date & Time Section */
+        .datetime-section {
+            background: rgba(232, 170, 120, 0.08);
+            border-radius: 24px;
+            padding: 10px 14px;
+            margin: 10px 0;
+            border: 1px solid rgba(232, 170, 120, 0.4);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
         }
 
         .datetime-item {
@@ -248,12 +305,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            padding: 6px;
+            gap: 8px;
+            padding: 5px;
         }
 
         .datetime-icon {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
         }
 
         .datetime-text {
@@ -261,25 +318,25 @@
         }
 
         .datetime-label {
-            font-size: 0.6rem;
-            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.55rem;
+            color: rgba(245, 195, 150, 0.7);
             text-transform: uppercase;
         }
 
         .datetime-value {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 700;
-            color: #f5da9e;
+            color: #f5c396;
         }
 
-        /* Location Section - Compact */
+        /* Location Section */
         .location-section {
-            background: rgba(212, 175, 55, 0.1);
+            background: rgba(232, 170, 120, 0.08);
             border-radius: 24px;
-            padding: 14px 16px;
-            margin: 12px 0;
+            padding: 12px 14px;
+            margin: 10px 0;
             text-align: center;
-            border: 1px solid rgba(212, 175, 55, 0.4);
+            border: 1px solid rgba(232, 170, 120, 0.4);
             transition: all 0.3s;
         }
 
@@ -288,8 +345,8 @@
         }
 
         .location-icon {
-            font-size: 1.6rem;
-            margin-bottom: 6px;
+            font-size: 1.5rem;
+            margin-bottom: 5px;
             animation: pulseLocation 2s infinite;
         }
 
@@ -299,51 +356,66 @@
         }
 
         .city-name {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 700;
-            color: #f5da9e;
-            margin-bottom: 4px;
+            color: #f5c396;
+            margin-bottom: 3px;
         }
 
         .address {
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 10px;
+            font-size: 0.65rem;
+            color: rgba(245, 195, 150, 0.8);
+            margin-bottom: 8px;
             line-height: 1.4;
         }
 
-        .map-btn {
+        /* Action Buttons Row */
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .map-btn, .share-btn {
+            flex: 1;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
-            background: linear-gradient(135deg, #d4af37, #b8942e);
+            background: linear-gradient(135deg, #e8aa78, #d48c5a);
             border: none;
-            padding: 8px 20px;
+            padding: 8px 12px;
             border-radius: 50px;
-            color: #1a1a2e;
+            color: #2c1810;
             font-weight: 700;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             cursor: pointer;
             transition: all 0.2s;
             font-family: inherit;
-            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+            box-shadow: 0 4px 12px rgba(232, 170, 120, 0.3);
         }
 
-        .map-btn:active {
+        .share-btn {
+            background: rgba(232, 170, 120, 0.2);
+            border: 1px solid rgba(232, 170, 120, 0.5);
+            color: #e8aa78;
+        }
+
+        .map-btn:active, .share-btn:active {
             transform: scale(0.96);
         }
 
         /* Decorative Divider */
         .decorative-divider {
             text-align: center;
-            margin: 16px 0 10px;
+            margin: 12px 0 8px;
             position: relative;
         }
 
         .decorative-divider span {
-            font-size: 0.8rem;
-            color: #d4af37;
-            background: rgba(30, 30, 50, 0.6);
+            font-size: 0.75rem;
+            color: #e8aa78;
+            background: rgba(45, 30, 22, 0.8);
             padding: 0 12px;
             display: inline-block;
         }
@@ -355,41 +427,41 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, #d4af37, #f5da9e, #d4af37, transparent);
+            background: linear-gradient(90deg, transparent, #e8aa78, #f5c396, #e8aa78, transparent);
             z-index: -1;
         }
 
         /* Footer */
         .footer {
             text-align: center;
-            margin-top: 12px;
-            padding-top: 8px;
-            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            margin-top: 10px;
+            padding-top: 6px;
+            border-top: 1px solid rgba(232, 170, 120, 0.25);
         }
 
         .footer p {
-            font-size: 0.6rem;
-            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.55rem;
+            color: rgba(245, 195, 150, 0.6);
         }
 
-        /* Sound Toggle - Compact */
+        /* Sound Toggle */
         .sound-toggle {
             position: fixed;
-            bottom: 15px;
-            left: 15px;
-            background: rgba(30, 30, 50, 0.85);
+            bottom: 12px;
+            left: 12px;
+            background: rgba(45, 30, 22, 0.85);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(212, 175, 55, 0.5);
+            border: 1px solid rgba(232, 170, 120, 0.5);
             border-radius: 50px;
-            padding: 6px 14px;
+            padding: 5px 12px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
             cursor: pointer;
             z-index: 100;
             font-family: 'Cairo', sans-serif;
-            font-size: 0.65rem;
-            color: #f5da9e;
+            font-size: 0.6rem;
+            color: #e8aa78;
             transition: all 0.2s;
         }
 
@@ -400,15 +472,15 @@
         /* Toast */
         .toast {
             position: fixed;
-            bottom: 85px;
+            bottom: 75px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
-            color: white;
+            background: linear-gradient(135deg, #e8aa78, #d48c5a);
+            color: #2c1810;
             padding: 8px 18px;
             border-radius: 50px;
             font-size: 0.7rem;
-            font-weight: 500;
+            font-weight: 600;
             opacity: 0;
             transition: all 0.3s ease;
             z-index: 200;
@@ -422,119 +494,135 @@
             opacity: 1;
         }
 
-        /* Responsive Adjustments */
+        /* Responsive */
         @media (max-width: 450px) {
             .content {
-                padding: 16px 16px 20px;
+                padding: 14px 14px 18px;
             }
             .title h1 {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
-            .host-name p {
-                font-size: 0.85rem;
+            .countdown-number {
+                font-size: 1.1rem;
+                padding: 4px 8px;
             }
-            .datetime-value {
-                font-size: 0.75rem;
-            }
-            .datetime-icon {
-                font-size: 1.2rem;
-            }
-            .message p {
-                font-size: 0.75rem;
-            }
-            .city-name {
-                font-size: 0.85rem;
-            }
-            .address {
-                font-size: 0.65rem;
-            }
-        }
-
-        @media (max-width: 380px) {
-            .datetime-section {
-                gap: 8px;
-            }
-            .datetime-item {
-                gap: 6px;
+            .countdown-item {
+                min-width: 45px;
             }
             .datetime-value {
+                font-size: 0.7rem;
+            }
+            .map-btn, .share-btn {
+                padding: 6px 10px;
                 font-size: 0.7rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="particles" id="particles"></div>
-    <div class="gold-orb"></div>
-    <div class="gold-orb gold-orb-2"></div>
+    <div class="full-screen">
+        <div class="particles" id="particles"></div>
+        <div class="warm-orb"></div>
+        <div class="warm-orb warm-orb-2"></div>
 
-    <div class="invitation-card">
-        <div class="gold-line"></div>
-        <div class="content">
-            <!-- Header Icon -->
-            <div class="header-icon">
-                <span>🍽️✨</span>
-            </div>
+        <div class="invitation-card">
+            <div class="gold-line"></div>
+            <div class="content">
+                <!-- Header Icon -->
+                <div class="header-icon">
+                    <span>🍽️✨</span>
+                </div>
 
-            <!-- Title -->
-            <div class="title">
-                <h1>دعوة عشاء</h1>
-            </div>
+                <!-- Title -->
+                <div class="title">
+                    <h1>دعوة عشاء</h1>
+                </div>
 
-            <!-- Host Name -->
-            <div class="host-name">
-                <p>منيرة الحربي</p>
-            </div>
+                <!-- Host Name -->
+                <div class="host-name">
+                    <p>منيرة الحربي</p>
+                </div>
 
-            <div class="subtitle">
-                <p>بكل حب وسعادة أدعوكم لمشاركتنا أمسية مميزة</p>
-            </div>
+                <div class="subtitle">
+                    <p>بكل حب وسعادة أدعوكم لمشاركتنا أمسية مميزة</p>
+                </div>
 
-            <!-- Invitation Message -->
-            <div class="message">
-                <h2>يسرني دعوتكم</h2>
-                <p>لتشريفنا بحضور عشاء خاص في منزلي<br>نتشرف بوجودكم معنا</p>
-            </div>
+                <!-- Invitation Message -->
+                <div class="message">
+                    <h2>يسرني دعوتكم</h2>
+                    <p>لتشريفنا بحضور عشاء خاص في منزلي<br>نتشرف بوجودكم معنا</p>
+                </div>
 
-            <!-- Date & Time Section - Horizontal Layout -->
-            <div class="datetime-section">
-                <div class="datetime-item">
-                    <div class="datetime-icon">📅</div>
-                    <div class="datetime-text">
-                        <div class="datetime-label">التاريخ</div>
-                        <div class="datetime-value" id="event-date">الجمعة 28 مارس</div>
+                <!-- Countdown Timer -->
+                <div class="countdown-section">
+                    <div class="countdown-title">⏳ المتبقي على الموعد</div>
+                    <div class="countdown" id="countdown">
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="days">00</div>
+                            <div class="countdown-label">يوم</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="hours">00</div>
+                            <div class="countdown-label">ساعة</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="minutes">00</div>
+                            <div class="countdown-label">دقيقة</div>
+                        </div>
+                        <div class="countdown-item">
+                            <div class="countdown-number" id="seconds">00</div>
+                            <div class="countdown-label">ثانية</div>
+                        </div>
                     </div>
                 </div>
-                <div class="datetime-item">
-                    <div class="datetime-icon">⏰</div>
-                    <div class="datetime-text">
-                        <div class="datetime-label">الوقت</div>
-                        <div class="datetime-value" id="event-time">8:00 مساءً</div>
+
+                <!-- Date & Time Section -->
+                <div class="datetime-section">
+                    <div class="datetime-item">
+                        <div class="datetime-icon">📅</div>
+                        <div class="datetime-text">
+                            <div class="datetime-label">التاريخ</div>
+                            <div class="datetime-value" id="event-date">الجمعة 28 مارس</div>
+                        </div>
+                    </div>
+                    <div class="datetime-item">
+                        <div class="datetime-icon">⏰</div>
+                        <div class="datetime-text">
+                            <div class="datetime-label">الوقت</div>
+                            <div class="datetime-value" id="event-time">8:00 مساءً</div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Location Section -->
-            <div class="location-section">
-                <div class="location-icon">📍</div>
-                <div class="city-name">مدينة الدمام</div>
-                <div class="address">حي الشاطئ، شارع الأمير محمد بن فهد</div>
-                <button class="map-btn" id="map-button">
-                    <span>🗺️</span> فتح الموقع على الخريطة
-                </button>
-            </div>
+                <!-- Location Section -->
+                <div class="location-section">
+                    <div class="location-icon">📍</div>
+                    <div class="city-name">مدينة الدمام</div>
+                    <div class="address">حي الشاطئ، شارع الأمير محمد بن فهد</div>
+                </div>
 
-            <!-- Decorative Divider -->
-            <div class="decorative-divider">
-                <span>✦ ننتظر حضوركم بكل شوق ✦</span>
-            </div>
+                <!-- Action Buttons -->
+                <div class="action-buttons">
+                    <button class="map-btn" id="map-button">
+                        <span>🗺️</span> فتح الخريطة
+                    </button>
+                    <button class="share-btn" id="share-button">
+                        <span>📤</span> مشاركة الدعوة
+                    </button>
+                </div>
 
-            <!-- Footer -->
-            <div class="footer">
-                <p>تصميم: سعود</p>
+                <!-- Decorative Divider -->
+                <div class="decorative-divider">
+                    <span>✦ ننتظر حضوركم بكل شوق ✦</span>
+                </div>
+
+                <!-- Footer -->
+                <div class="footer">
+                    <p>تصميم: سعود</p>
+                </div>
             </div>
+            <div class="gold-line"></div>
         </div>
-        <div class="gold-line"></div>
     </div>
 
     <!-- Sound Toggle -->
@@ -592,6 +680,12 @@
                         gain2.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.3);
                         osc2.stop(audioCtx.currentTime + 0.3);
                     }, 100);
+                } else if (type === 'share') {
+                    oscillator.frequency.value = 650;
+                    oscillator.type = 'sine';
+                    oscillator.start();
+                    gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.2);
+                    oscillator.stop(audioCtx.currentTime + 0.2);
                 }
             } catch(e) { console.log('Audio error'); }
         }
@@ -627,25 +721,81 @@
         // ==================== Google Maps Link ====================
         const mapsLink = "https://www.google.com/maps/search/الدمام+حي+الشاطئ+شارع+الأمير+محمد+بن+فهد";
 
+        // ==================== Share Invitation ====================
+        function shareInvitation() {
+            playSound('share');
+            const shareText = `🍽️ دعوة عشاء من منيرة الحربي\n\nيسرني دعوتكم لحضور عشاء خاص في منزلي\n📍 الدمام، حي الشاطئ، شارع الأمير محمد بن فهد\n📅 ${document.getElementById('event-date').textContent}\n⏰ 8:00 مساءً\n\nنتمنى تشريفكم 🌟`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'دعوة عشاء',
+                    text: shareText,
+                    url: mapsLink
+                }).catch(() => {
+                    copyToClipboard(shareText);
+                });
+            } else {
+                copyToClipboard(shareText);
+            }
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('📋 تم نسخ الدعوة للحافظة');
+            }).catch(() => {
+                showToast('❌ فشل النسخ');
+            });
+        }
+
         // ==================== Show Toast ====================
         function showToast(message) {
             const toast = document.getElementById('toast');
             toast.textContent = message;
             toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 2000);
+            setTimeout(() => toast.classList.remove('show'), 2500);
         }
 
-        // ==================== Set Event Date ====================
+        // ==================== Countdown Timer ====================
+        let targetDate;
+
         function setEventDate() {
             const now = new Date();
             const daysUntilFriday = (5 - now.getDay() + 7) % 7;
             const nextFriday = new Date(now);
             nextFriday.setDate(now.getDate() + (daysUntilFriday === 0 ? 7 : daysUntilFriday));
+            nextFriday.setHours(20, 0, 0, 0);
+            
+            targetDate = nextFriday;
             
             const options = { weekday: 'long', day: 'numeric', month: 'long' };
             const dateStr = nextFriday.toLocaleDateString('ar-SA', options);
             
             document.getElementById('event-date').textContent = dateStr;
+        }
+
+        function updateCountdown() {
+            if (!targetDate) return;
+            
+            const now = new Date();
+            const diff = targetDate - now;
+            
+            if (diff <= 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+            
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
         }
 
         // ==================== Open Map ====================
@@ -659,8 +809,11 @@
         document.addEventListener('DOMContentLoaded', () => {
             createParticles();
             setEventDate();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
             
             document.getElementById('map-button').addEventListener('click', openMap);
+            document.getElementById('share-button').addEventListener('click', shareInvitation);
             
             const soundToggle = document.getElementById('soundToggle');
             soundToggle.addEventListener('click', () => {
@@ -669,7 +822,7 @@
                 if (soundEnabled) playSound('click');
             });
             
-            const buttons = document.querySelectorAll('.map-btn, .sound-toggle');
+            const buttons = document.querySelectorAll('.map-btn, .share-btn, .sound-toggle');
             buttons.forEach(btn => {
                 btn.addEventListener('touchstart', function() { this.style.transform = 'scale(0.96)'; });
                 btn.addEventListener('touchend', function() { this.style.transform = ''; });
