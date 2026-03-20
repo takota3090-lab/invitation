@@ -137,7 +137,7 @@
             font-size: 0.75rem;
         }
 
-        /* Invitation Message - Smaller */
+        /* Invitation Message */
         .message {
             background: #fdf8f5;
             border-radius: 28px;
@@ -160,54 +160,7 @@
             color: #2c2c2c;
         }
 
-        /* Countdown Timer - Smaller */
-        .countdown-section {
-            background: #fdf8f5;
-            border-radius: 28px;
-            padding: 10px 12px;
-            margin: 8px 0;
-            text-align: center;
-            border: 1px solid #f5e0e0;
-        }
-
-        .countdown-title {
-            font-size: 0.65rem;
-            color: #2c2c2c;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .countdown-item {
-            text-align: center;
-            min-width: 55px;
-        }
-
-        .countdown-number {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: #2c2c2c;
-            background: #fff5f0;
-            padding: 5px 8px;
-            border-radius: 16px;
-            font-family: monospace;
-            letter-spacing: 1px;
-            border: 1px solid #f5e0e0;
-        }
-
-        .countdown-label {
-            font-size: 0.55rem;
-            color: #2c2c2c;
-            margin-top: 3px;
-        }
-
-        /* Date & Time Section - Unified, Smaller */
+        /* Date & Time Section - Unified (Now First) */
         .datetime-section {
             background: #fdf8f5;
             border-radius: 28px;
@@ -263,7 +216,54 @@
             color: #2c2c2c;
         }
 
-        /* Action Buttons - Smaller */
+        /* Countdown Timer - Now After Date */
+        .countdown-section {
+            background: #fdf8f5;
+            border-radius: 28px;
+            padding: 10px 12px;
+            margin: 8px 0;
+            text-align: center;
+            border: 1px solid #f5e0e0;
+        }
+
+        .countdown-title {
+            font-size: 0.65rem;
+            color: #2c2c2c;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .countdown-item {
+            text-align: center;
+            min-width: 55px;
+        }
+
+        .countdown-number {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #2c2c2c;
+            background: #fff5f0;
+            padding: 5px 8px;
+            border-radius: 16px;
+            font-family: monospace;
+            letter-spacing: 1px;
+            border: 1px solid #f5e0e0;
+        }
+
+        .countdown-label {
+            font-size: 0.55rem;
+            color: #2c2c2c;
+            margin-top: 3px;
+        }
+
+        /* Action Buttons */
         .action-buttons {
             display: flex;
             gap: 10px;
@@ -293,7 +293,7 @@
             background: #f0e0e0;
         }
 
-        /* Decorative Divider - Smaller */
+        /* Decorative Divider */
         .decorative-divider {
             text-align: center;
             margin: 12px 0 8px;
@@ -319,7 +319,7 @@
             z-index: -1;
         }
 
-        /* Footer - No designer credit here anymore */
+        /* Footer */
         .footer {
             text-align: center;
             margin-top: 8px;
@@ -406,11 +406,11 @@
                 padding: 8px 12px;
                 margin: 6px 0;
             }
-            .countdown-section {
+            .datetime-section {
                 padding: 6px 10px;
                 margin: 6px 0;
             }
-            .datetime-section {
+            .countdown-section {
                 padding: 6px 10px;
                 margin: 6px 0;
             }
@@ -458,7 +458,18 @@
                     <p>لتشريفنا بحضور عشاء خاص في منزلي<br>نتشرف بوجودكم معنا</p>
                 </div>
 
-                <!-- Countdown Timer -->
+                <!-- Date & Time Section - Unified (Now First) -->
+                <div class="datetime-section">
+                    <div class="date-header">📅 التاريخ</div>
+                    <div class="date-main" id="gregorian-date">الخميس 7 مايو 2026</div>
+                    <div class="date-secondary" id="hijri-date">20 شوال 1447 هـ</div>
+                    <div class="time-display">
+                        <span class="time-icon">⏰</span>
+                        <span class="time-value">8:00 مساءً</span>
+                    </div>
+                </div>
+
+                <!-- Countdown Timer (Now After Date) -->
                 <div class="countdown-section">
                     <div class="countdown-title">⏳ المتبقي على الموعد</div>
                     <div class="countdown" id="countdown">
@@ -478,17 +489,6 @@
                             <div class="countdown-number" id="seconds">00</div>
                             <div class="countdown-label">ثانية</div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Date & Time Section - Unified -->
-                <div class="datetime-section">
-                    <div class="date-header">📅 التاريخ</div>
-                    <div class="date-main" id="gregorian-date">الخميس 7 مايو 2026</div>
-                    <div class="date-secondary" id="hijri-date">20 شوال 1447 هـ</div>
-                    <div class="time-display">
-                        <span class="time-icon">⏰</span>
-                        <span class="time-value">8:00 مساءً</span>
                     </div>
                 </div>
 
