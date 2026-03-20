@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#1a1a2e">
+    <meta name="theme-color" content="#0f0c1a">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>دعوة عشاء | منيرة الحربي</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Amiri:wght@400;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -18,16 +18,19 @@
         body {
             font-family: 'Cairo', 'Amiri', 'Tajawal', system-ui, sans-serif;
             background: linear-gradient(145deg, #0a0a1a 0%, #1a1a2e 50%, #0f0f1f 100%);
-            min-height: 100vh;
+            height: 100vh;
+            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 16px;
-            position: relative;
-            overflow-x: hidden;
+            padding: 12px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow: hidden;
         }
 
-        /* Animated Background Particles */
+        /* Animated Background */
         .particles {
             position: fixed;
             top: 0;
@@ -50,7 +53,6 @@
             50% { transform: translateY(-40px) translateX(20px) scale(1.2); opacity: 0.6; }
         }
 
-        /* Golden Orbs */
         .gold-orb {
             position: fixed;
             top: 20%;
@@ -78,19 +80,27 @@
             50% { opacity: 0.8; transform: scale(1.1); }
         }
 
-        /* Main Container */
+        /* Main Container - Fixed Height No Scroll */
         .invitation-card {
             position: relative;
             z-index: 10;
-            max-width: 500px;
             width: 100%;
-            background: rgba(30, 30, 50, 0.75);
+            max-width: 480px;
+            height: auto;
+            max-height: 98vh;
+            background: rgba(30, 30, 50, 0.85);
             backdrop-filter: blur(20px);
-            border-radius: 64px;
+            border-radius: 56px;
             border: 1px solid rgba(212, 175, 55, 0.4);
             box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 215, 120, 0.1);
-            overflow: hidden;
-            animation: cardGlow 3s ease-in-out infinite, slideUp 0.8s ease;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            animation: cardGlow 3s ease-in-out infinite, slideUp 0.6s ease;
+        }
+
+        .invitation-card::-webkit-scrollbar {
+            display: none;
         }
 
         @keyframes cardGlow {
@@ -99,53 +109,46 @@
         }
 
         @keyframes slideUp {
-            from { opacity: 0; transform: translateY(50px); }
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Decorative Top Border */
+        /* Gold Lines */
         .gold-line {
-            height: 4px;
+            height: 3px;
             background: linear-gradient(90deg, transparent, #d4af37, #f5da9e, #d4af37, transparent);
             width: 100%;
-            animation: shimmerLine 3s infinite;
         }
 
-        @keyframes shimmerLine {
-            0%, 100% { background-position: -100% 0; }
-            50% { background-position: 100% 0; }
-        }
-
-        /* Content */
+        /* Content - Compact Layout */
         .content {
-            padding: 32px 24px 40px;
+            padding: 20px 20px 24px;
         }
 
         /* Header Icon */
         .header-icon {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
             animation: bounceIcon 2s infinite;
         }
 
         @keyframes bounceIcon {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+            50% { transform: translateY(-5px); }
         }
 
         .header-icon span {
-            font-size: 4rem;
+            font-size: 3rem;
             filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.4));
         }
 
         /* Title */
         .title {
             text-align: center;
-            margin-bottom: 8px;
         }
 
         .title h1 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 800;
             font-family: 'Amiri', 'Tajawal', serif;
             background: linear-gradient(135deg, #f5da9e, #e8c97a, #d4ae5a);
@@ -163,12 +166,12 @@
         /* Host Name */
         .host-name {
             text-align: center;
-            margin-bottom: 16px;
+            margin: 6px 0 8px;
         }
 
         .host-name p {
-            font-size: 1rem;
-            font-weight: 500;
+            font-size: 0.95rem;
+            font-weight: 600;
             color: #e8c97a;
             letter-spacing: 1px;
             position: relative;
@@ -183,152 +186,145 @@
             top: 50%;
             transform: translateY(-50%);
             color: #d4af37;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
         }
 
         .host-name p::before {
-            right: -15px;
+            right: -12px;
         }
 
         .host-name p::after {
-            left: -15px;
+            left: -12px;
         }
 
-        .title p {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.85rem;
-            margin-top: 4px;
-        }
-
-        /* Invitation Message */
-        .message {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 32px;
-            padding: 24px;
-            margin: 20px 0;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+        .subtitle {
             text-align: center;
-            animation: fadeIn 0.8s ease 0.2s backwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .message h2 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #f5da9e;
             margin-bottom: 12px;
         }
 
-        .message p {
+        .subtitle p {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.75rem;
+        }
+
+        /* Invitation Message - Compact */
+        .message {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 28px;
+            padding: 14px 16px;
+            margin: 12px 0;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            text-align: center;
+        }
+
+        .message h2 {
             font-size: 1rem;
-            line-height: 1.8;
+            font-weight: 700;
+            color: #f5da9e;
+            margin-bottom: 6px;
+        }
+
+        .message p {
+            font-size: 0.8rem;
+            line-height: 1.5;
             color: #e8f0e8;
         }
 
-        /* Date & Time Section */
+        /* Date & Time Section - Compact */
         .datetime-section {
             background: rgba(212, 175, 55, 0.1);
-            border-radius: 28px;
-            padding: 20px;
-            margin: 20px 0;
+            border-radius: 24px;
+            padding: 12px 16px;
+            margin: 12px 0;
             border: 1px solid rgba(212, 175, 55, 0.4);
-            animation: fadeIn 0.8s ease 0.3s backwards;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
         }
 
         .datetime-item {
+            flex: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            padding: 12px;
-            border-bottom: 1px dashed rgba(212, 175, 55, 0.3);
-        }
-
-        .datetime-item:last-child {
-            border-bottom: none;
+            gap: 10px;
+            padding: 6px;
         }
 
         .datetime-icon {
-            font-size: 1.8rem;
+            font-size: 1.4rem;
         }
 
         .datetime-text {
-            flex: 1;
             text-align: right;
         }
 
         .datetime-label {
-            font-size: 0.7rem;
+            font-size: 0.6rem;
             color: rgba(255, 255, 255, 0.6);
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
         .datetime-value {
-            font-size: 1.2rem;
+            font-size: 0.9rem;
             font-weight: 700;
             color: #f5da9e;
         }
 
-        /* Location Section */
+        /* Location Section - Compact */
         .location-section {
             background: rgba(212, 175, 55, 0.1);
-            border-radius: 28px;
-            padding: 20px;
-            margin: 20px 0;
+            border-radius: 24px;
+            padding: 14px 16px;
+            margin: 12px 0;
             text-align: center;
             border: 1px solid rgba(212, 175, 55, 0.4);
-            animation: fadeIn 0.8s ease 0.4s backwards;
             transition: all 0.3s;
         }
 
-        .location-section:hover {
-            transform: scale(1.02);
-            background: rgba(212, 175, 55, 0.15);
+        .location-section:active {
+            transform: scale(0.98);
         }
 
         .location-icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
+            font-size: 1.6rem;
+            margin-bottom: 6px;
             animation: pulseLocation 2s infinite;
         }
 
         @keyframes pulseLocation {
             0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            50% { transform: scale(1.05); }
         }
 
         .city-name {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             font-weight: 700;
             color: #f5da9e;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
 
         .address {
-            font-size: 0.85rem;
+            font-size: 0.7rem;
             color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 16px;
+            margin-bottom: 10px;
+            line-height: 1.4;
         }
 
         .map-btn {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             background: linear-gradient(135deg, #d4af37, #b8942e);
             border: none;
-            padding: 12px 24px;
-            border-radius: 60px;
+            padding: 8px 20px;
+            border-radius: 50px;
             color: #1a1a2e;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             cursor: pointer;
             transition: all 0.2s;
-            text-decoration: none;
             font-family: inherit;
             box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
         }
@@ -340,15 +336,15 @@
         /* Decorative Divider */
         .decorative-divider {
             text-align: center;
-            margin: 24px 0 16px;
+            margin: 16px 0 10px;
             position: relative;
         }
 
         .decorative-divider span {
-            font-size: 1.2rem;
+            font-size: 0.8rem;
             color: #d4af37;
             background: rgba(30, 30, 50, 0.6);
-            padding: 0 16px;
+            padding: 0 12px;
             display: inline-block;
         }
 
@@ -366,33 +362,33 @@
         /* Footer */
         .footer {
             text-align: center;
-            margin-top: 20px;
-            padding-top: 16px;
+            margin-top: 12px;
+            padding-top: 8px;
             border-top: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .footer p {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             color: rgba(255, 255, 255, 0.5);
         }
 
-        /* Sound Toggle */
+        /* Sound Toggle - Compact */
         .sound-toggle {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: rgba(30, 30, 50, 0.8);
+            bottom: 15px;
+            left: 15px;
+            background: rgba(30, 30, 50, 0.85);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(212, 175, 55, 0.5);
             border-radius: 50px;
-            padding: 8px 16px;
+            padding: 6px 14px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             cursor: pointer;
             z-index: 100;
             font-family: 'Cairo', sans-serif;
-            font-size: 0.7rem;
+            font-size: 0.65rem;
             color: #f5da9e;
             transition: all 0.2s;
         }
@@ -401,17 +397,17 @@
             transform: scale(0.95);
         }
 
-        /* Toast Message */
+        /* Toast */
         .toast {
             position: fixed;
-            bottom: 100px;
+            bottom: 85px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
             background: linear-gradient(135deg, #2ecc71, #27ae60);
             color: white;
-            padding: 12px 24px;
-            border-radius: 60px;
-            font-size: 0.8rem;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.7rem;
             font-weight: 500;
             opacity: 0;
             transition: all 0.3s ease;
@@ -426,18 +422,43 @@
             opacity: 1;
         }
 
-        @media (max-width: 480px) {
+        /* Responsive Adjustments */
+        @media (max-width: 450px) {
             .content {
-                padding: 24px 18px 32px;
+                padding: 16px 16px 20px;
             }
             .title h1 {
-                font-size: 1.6rem;
-            }
-            .datetime-value {
-                font-size: 1rem;
+                font-size: 1.5rem;
             }
             .host-name p {
                 font-size: 0.85rem;
+            }
+            .datetime-value {
+                font-size: 0.75rem;
+            }
+            .datetime-icon {
+                font-size: 1.2rem;
+            }
+            .message p {
+                font-size: 0.75rem;
+            }
+            .city-name {
+                font-size: 0.85rem;
+            }
+            .address {
+                font-size: 0.65rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .datetime-section {
+                gap: 8px;
+            }
+            .datetime-item {
+                gap: 6px;
+            }
+            .datetime-value {
+                font-size: 0.7rem;
             }
         }
     </style>
@@ -465,25 +486,23 @@
                 <p>منيرة الحربي</p>
             </div>
 
-            <div class="title">
+            <div class="subtitle">
                 <p>بكل حب وسعادة أدعوكم لمشاركتنا أمسية مميزة</p>
             </div>
 
             <!-- Invitation Message -->
             <div class="message">
                 <h2>يسرني دعوتكم</h2>
-                <p>لتشريفنا بحضور عشاء خاص في منزلي<br>
-                نتمنى أن نكون على موعد مع أجمل الأوقات<br>
-                ونتشرف بوجودكم معنا</p>
+                <p>لتشريفنا بحضور عشاء خاص في منزلي<br>نتشرف بوجودكم معنا</p>
             </div>
 
-            <!-- Date & Time Section -->
+            <!-- Date & Time Section - Horizontal Layout -->
             <div class="datetime-section">
                 <div class="datetime-item">
                     <div class="datetime-icon">📅</div>
                     <div class="datetime-text">
                         <div class="datetime-label">التاريخ</div>
-                        <div class="datetime-value" id="event-date">الجمعة 28 مارس 2025</div>
+                        <div class="datetime-value" id="event-date">الجمعة 28 مارس</div>
                     </div>
                 </div>
                 <div class="datetime-item">
@@ -499,9 +518,9 @@
             <div class="location-section">
                 <div class="location-icon">📍</div>
                 <div class="city-name">مدينة الدمام</div>
-                <div class="address">الدمام، حي الشاطئ، شارع الأمير محمد بن فهد</div>
+                <div class="address">حي الشاطئ، شارع الأمير محمد بن فهد</div>
                 <button class="map-btn" id="map-button">
-                    <span>🗺️</span> فتح الموقع على خرائط Google
+                    <span>🗺️</span> فتح الموقع على الخريطة
                 </button>
             </div>
 
@@ -512,7 +531,7 @@
 
             <!-- Footer -->
             <div class="footer">
-                <p style="margin-top: 6px;">تصميم: سعود</p>
+                <p>تصميم: سعود</p>
             </div>
         </div>
         <div class="gold-line"></div>
@@ -521,10 +540,9 @@
     <!-- Sound Toggle -->
     <div class="sound-toggle" id="soundToggle">
         <span>🔊</span>
-        <span>المؤثرات الصوتية</span>
+        <span>المؤثرات</span>
     </div>
 
-    <!-- Toast -->
     <div id="toast" class="toast"></div>
 
     <script>
@@ -574,34 +592,28 @@
                         gain2.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.3);
                         osc2.stop(audioCtx.currentTime + 0.3);
                     }, 100);
-                } else if (type === 'map') {
-                    oscillator.frequency.value = 600;
-                    oscillator.type = 'sine';
-                    oscillator.start();
-                    gainNode.gain.exponentialRampToValueAtTime(0.00001, audioCtx.currentTime + 0.2);
-                    oscillator.stop(audioCtx.currentTime + 0.2);
                 }
             } catch(e) { console.log('Audio error'); }
         }
 
         // Enable audio on first touch
-        document.addEventListener('touchstart', () => {
+        const enableAudio = () => {
             initAudio();
             if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
             playSound('open');
-        }, { once: true });
-        document.addEventListener('click', () => {
-            initAudio();
-            if (audioCtx && audioCtx.state === 'suspended') audioCtx.resume();
-        });
+            document.removeEventListener('touchstart', enableAudio);
+            document.removeEventListener('click', enableAudio);
+        };
+        document.addEventListener('touchstart', enableAudio);
+        document.addEventListener('click', enableAudio);
 
         // ==================== Create Particles ====================
         function createParticles() {
             const container = document.getElementById('particles');
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 40; i++) {
                 const particle = document.createElement('div');
                 particle.className = 'particle';
-                const size = Math.random() * 6 + 2;
+                const size = Math.random() * 5 + 2;
                 particle.style.width = size + 'px';
                 particle.style.height = size + 'px';
                 particle.style.left = Math.random() * 100 + '%';
@@ -613,14 +625,12 @@
         }
 
         // ==================== Google Maps Link ====================
-        // Dammam location - Al Shatee District, Prince Mohammed bin Fahd Road
         const mapsLink = "https://www.google.com/maps/search/الدمام+حي+الشاطئ+شارع+الأمير+محمد+بن+فهد";
 
         // ==================== Show Toast ====================
         function showToast(message) {
             const toast = document.getElementById('toast');
             toast.textContent = message;
-            toast.style.background = 'linear-gradient(135deg, #2ecc71, #27ae60)';
             toast.classList.add('show');
             setTimeout(() => toast.classList.remove('show'), 2000);
         }
@@ -631,14 +641,11 @@
             const daysUntilFriday = (5 - now.getDay() + 7) % 7;
             const nextFriday = new Date(now);
             nextFriday.setDate(now.getDate() + (daysUntilFriday === 0 ? 7 : daysUntilFriday));
-            nextFriday.setHours(20, 0, 0, 0);
             
-            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const options = { weekday: 'long', day: 'numeric', month: 'long' };
             const dateStr = nextFriday.toLocaleDateString('ar-SA', options);
-            const timeStr = "8:00 مساءً";
             
             document.getElementById('event-date').textContent = dateStr;
-            document.getElementById('event-time').textContent = timeStr;
         }
 
         // ==================== Open Map ====================
@@ -653,35 +660,21 @@
             createParticles();
             setEventDate();
             
-            // Set up event listeners
             document.getElementById('map-button').addEventListener('click', openMap);
             
-            // Sound toggle
             const soundToggle = document.getElementById('soundToggle');
             soundToggle.addEventListener('click', () => {
                 soundEnabled = !soundEnabled;
-                soundToggle.innerHTML = soundEnabled ? '<span>🔊</span><span>المؤثرات الصوتية</span>' : '<span>🔇</span><span>كتم الصوت</span>';
+                soundToggle.innerHTML = soundEnabled ? '<span>🔊</span><span>المؤثرات</span>' : '<span>🔇</span><span>كتم</span>';
                 if (soundEnabled) playSound('click');
             });
             
-            // Add animation to buttons on touch
-            const allButtons = document.querySelectorAll('.map-btn, .sound-toggle');
-            allButtons.forEach(btn => {
-                btn.addEventListener('touchstart', function() {
-                    this.style.transform = 'scale(0.96)';
-                });
-                btn.addEventListener('touchend', function() {
-                    this.style.transform = '';
-                });
-                btn.addEventListener('touchcancel', function() {
-                    this.style.transform = '';
-                });
+            const buttons = document.querySelectorAll('.map-btn, .sound-toggle');
+            buttons.forEach(btn => {
+                btn.addEventListener('touchstart', function() { this.style.transform = 'scale(0.96)'; });
+                btn.addEventListener('touchend', function() { this.style.transform = ''; });
+                btn.addEventListener('touchcancel', function() { this.style.transform = ''; });
             });
-            
-            // Play opening sound on page load with delay
-            setTimeout(() => {
-                playSound('open');
-            }, 500);
         });
     </script>
 </body>
