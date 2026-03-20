@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="theme-color" content="#2c1810">
+    <meta name="theme-color" content="#0a0a2a">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <title>دعوة عشاء | منيرة الحربي</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Amiri:wght@400;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -17,20 +17,21 @@
 
         body {
             font-family: 'Cairo', 'Amiri', 'Tajawal', system-ui, sans-serif;
-            background: linear-gradient(145deg, #2c1810 0%, #3a2a1f 50%, #2a1e15 100%);
+            background: radial-gradient(ellipse at 30% 40%, #0a0a2a 0%, #050518 100%);
             height: 100vh;
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 0;
+            margin: 0;
             position: fixed;
             top: 0;
             left: 0;
             overflow: hidden;
         }
 
-        /* Full Screen Container */
+        /* Full Screen Container - No Borders */
         .full-screen {
             width: 100%;
             height: 100%;
@@ -38,10 +39,11 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
+            position: relative;
         }
 
-        /* Animated Background */
-        .particles {
+        /* Animated Star Background */
+        .stars {
             position: fixed;
             top: 0;
             left: 0;
@@ -51,143 +53,132 @@
             z-index: 0;
         }
 
-        .particle {
+        .star {
             position: absolute;
-            background: radial-gradient(circle, rgba(232, 170, 120, 0.4) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 215, 120, 0.6) 0%, transparent 70%);
             border-radius: 50%;
-            animation: floatParticle 8s infinite ease-in-out;
+            animation: twinkle 4s infinite ease-in-out;
         }
 
-        @keyframes floatParticle {
-            0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.3; }
-            50% { transform: translateY(-40px) translateX(20px) scale(1.2); opacity: 0.6; }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
         }
 
-        .warm-orb {
+        .nebula {
             position: fixed;
             top: 20%;
-            right: -15%;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(232, 170, 120, 0.2) 0%, transparent 70%);
+            right: -20%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(100, 150, 255, 0.15) 0%, transparent 70%);
             border-radius: 50%;
-            filter: blur(60px);
-            animation: pulseOrb 6s infinite;
+            filter: blur(80px);
+            animation: drift 20s infinite;
             z-index: 0;
         }
 
-        .warm-orb-2 {
+        .nebula-2 {
             bottom: 10%;
-            left: -15%;
+            left: -20%;
             top: auto;
-            width: 280px;
-            height: 280px;
-            background: radial-gradient(circle, rgba(210, 130, 80, 0.2) 0%, transparent 70%);
-            animation: pulseOrb 8s infinite reverse;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(200, 180, 100, 0.12) 0%, transparent 70%);
+            animation: drift 25s infinite reverse;
         }
 
-        @keyframes pulseOrb {
-            0%, 100% { opacity: 0.4; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.1); }
+        @keyframes drift {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(40px, -30px); }
         }
 
-        /* Main Container - Full Screen Fit */
+        /* Main Container - Full Screen No Borders */
         .invitation-card {
             position: relative;
             z-index: 10;
-            width: 94%;
-            max-width: 480px;
-            height: auto;
-            max-height: 96vh;
-            background: linear-gradient(145deg, rgba(45, 30, 22, 0.92), rgba(35, 22, 16, 0.96));
-            backdrop-filter: blur(20px);
-            border-radius: 56px;
-            border: 1px solid rgba(232, 170, 120, 0.5);
-            box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(232, 170, 120, 0.15);
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, rgba(10, 10, 42, 0.75), rgba(5, 5, 30, 0.85));
+            backdrop-filter: blur(15px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
             overflow-y: auto;
             overflow-x: hidden;
             scrollbar-width: none;
-            animation: cardGlow 3s ease-in-out infinite, slideUp 0.6s ease;
+            animation: fadeIn 0.8s ease;
         }
 
         .invitation-card::-webkit-scrollbar {
             display: none;
         }
 
-        @keyframes cardGlow {
-            0%, 100% { box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(232, 170, 120, 0.15); }
-            50% { box-shadow: 0 40px 60px rgba(232, 170, 120, 0.25), inset 0 1px 0 rgba(232, 170, 120, 0.25); }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Gold Lines */
-        .gold-line {
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #e8aa78, #f5c396, #e8aa78, transparent);
-            width: 100%;
-        }
-
-        /* Content */
+        /* Content - Centered */
         .content {
-            padding: 18px 18px 22px;
+            padding: 24px 20px;
+            max-width: 500px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            min-height: 100%;
         }
 
         /* Header Icon */
         .header-icon {
             text-align: center;
-            margin-bottom: 10px;
-            animation: bounceIcon 2s infinite;
+            margin-bottom: 16px;
+            animation: floatIcon 3s infinite ease-in-out;
         }
 
-        @keyframes bounceIcon {
+        @keyframes floatIcon {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+            50% { transform: translateY(-8px); }
         }
 
         .header-icon span {
-            font-size: 2.8rem;
-            filter: drop-shadow(0 4px 12px rgba(232, 170, 120, 0.5));
+            font-size: 3.2rem;
+            filter: drop-shadow(0 0 15px rgba(255, 215, 120, 0.5));
         }
 
         /* Title */
         .title {
             text-align: center;
+            margin-bottom: 8px;
         }
 
         .title h1 {
-            font-size: 1.7rem;
+            font-size: 2.2rem;
             font-weight: 800;
             font-family: 'Amiri', 'Tajawal', serif;
-            background: linear-gradient(135deg, #f5c396, #e8aa78, #d48c5a);
+            background: linear-gradient(135deg, #ffdf9c, #ffcd7e, #f5b642);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            animation: titleGlow 2s infinite;
-        }
-
-        @keyframes titleGlow {
-            0%, 100% { text-shadow: 0 0 5px rgba(232, 170, 120, 0.3); }
-            50% { text-shadow: 0 0 15px rgba(232, 170, 120, 0.6); }
+            letter-spacing: 1px;
         }
 
         /* Host Name */
         .host-name {
             text-align: center;
-            margin: 4px 0 6px;
+            margin: 8px 0 12px;
         }
 
         .host-name p {
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 600;
-            color: #e8aa78;
-            letter-spacing: 1px;
+            color: #ffcd7e;
+            letter-spacing: 2px;
             position: relative;
             display: inline-block;
-            padding: 0 18px;
+            padding: 0 20px;
         }
 
         .host-name p::before,
@@ -196,147 +187,143 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            color: #e8aa78;
-            font-size: 0.65rem;
+            color: #ffcd7e;
+            font-size: 0.8rem;
         }
 
         .host-name p::before {
-            right: -10px;
+            right: -12px;
         }
 
         .host-name p::after {
-            left: -10px;
+            left: -12px;
         }
 
         .subtitle {
             text-align: center;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         .subtitle p {
-            color: rgba(245, 195, 150, 0.8);
-            font-size: 0.7rem;
+            color: rgba(255, 235, 200, 0.8);
+            font-size: 0.8rem;
         }
 
         /* Invitation Message */
         .message {
-            background: rgba(232, 170, 120, 0.08);
-            border-radius: 28px;
-            padding: 12px 14px;
-            margin: 10px 0;
-            border: 1px solid rgba(232, 170, 120, 0.35);
+            background: rgba(255, 215, 120, 0.08);
+            border-radius: 32px;
+            padding: 20px 18px;
+            margin: 12px 0;
             text-align: center;
+            backdrop-filter: blur(5px);
         }
 
         .message h2 {
-            font-size: 0.95rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            color: #f5c396;
-            margin-bottom: 5px;
+            color: #ffdf9c;
+            margin-bottom: 8px;
         }
 
         .message p {
-            font-size: 0.75rem;
-            line-height: 1.45;
-            color: #f0dfce;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: rgba(255, 245, 225, 0.9);
         }
 
         /* Countdown Timer */
         .countdown-section {
-            background: rgba(232, 170, 120, 0.08);
-            border-radius: 24px;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid rgba(232, 170, 120, 0.4);
+            background: rgba(255, 215, 120, 0.08);
+            border-radius: 32px;
+            padding: 16px;
+            margin: 12px 0;
             text-align: center;
+            backdrop-filter: blur(5px);
         }
 
         .countdown-title {
-            font-size: 0.7rem;
-            color: rgba(245, 195, 150, 0.7);
-            margin-bottom: 8px;
+            font-size: 0.75rem;
+            color: rgba(255, 215, 120, 0.8);
+            margin-bottom: 12px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
         .countdown {
             display: flex;
             justify-content: center;
-            gap: 12px;
+            gap: 15px;
+            flex-wrap: wrap;
         }
 
         .countdown-item {
             text-align: center;
-            min-width: 55px;
+            min-width: 65px;
         }
 
         .countdown-number {
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             font-weight: 800;
-            color: #f5c396;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 6px 10px;
-            border-radius: 16px;
+            color: #ffdf9c;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 8px 12px;
+            border-radius: 20px;
             font-family: monospace;
             letter-spacing: 2px;
+            backdrop-filter: blur(5px);
         }
 
         .countdown-label {
-            font-size: 0.55rem;
-            color: rgba(245, 195, 150, 0.6);
-            margin-top: 4px;
+            font-size: 0.6rem;
+            color: rgba(255, 215, 120, 0.7);
+            margin-top: 6px;
         }
 
         /* Date & Time Section */
         .datetime-section {
-            background: rgba(232, 170, 120, 0.08);
-            border-radius: 24px;
-            padding: 10px 14px;
-            margin: 10px 0;
-            border: 1px solid rgba(232, 170, 120, 0.4);
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            gap: 12px;
+            gap: 15px;
+            margin: 12px 0;
         }
 
         .datetime-item {
             flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 5px;
+            background: rgba(255, 215, 120, 0.08);
+            border-radius: 28px;
+            padding: 12px;
+            text-align: center;
+            backdrop-filter: blur(5px);
         }
 
         .datetime-icon {
-            font-size: 1.3rem;
-        }
-
-        .datetime-text {
-            text-align: right;
+            font-size: 1.6rem;
+            margin-bottom: 6px;
         }
 
         .datetime-label {
-            font-size: 0.55rem;
-            color: rgba(245, 195, 150, 0.7);
+            font-size: 0.6rem;
+            color: rgba(255, 215, 120, 0.7);
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .datetime-value {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 700;
-            color: #f5c396;
+            color: #ffdf9c;
+            margin-top: 4px;
         }
 
         /* Location Section */
         .location-section {
-            background: rgba(232, 170, 120, 0.08);
-            border-radius: 24px;
-            padding: 12px 14px;
-            margin: 10px 0;
+            background: rgba(255, 215, 120, 0.08);
+            border-radius: 32px;
+            padding: 16px;
+            margin: 12px 0;
             text-align: center;
-            border: 1px solid rgba(232, 170, 120, 0.4);
+            backdrop-filter: blur(5px);
             transition: all 0.3s;
         }
 
@@ -345,8 +332,8 @@
         }
 
         .location-icon {
-            font-size: 1.5rem;
-            margin-bottom: 5px;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
             animation: pulseLocation 2s infinite;
         }
 
@@ -356,24 +343,24 @@
         }
 
         .city-name {
-            font-size: 0.9rem;
+            font-size: 1rem;
             font-weight: 700;
-            color: #f5c396;
-            margin-bottom: 3px;
+            color: #ffdf9c;
+            margin-bottom: 4px;
         }
 
         .address {
-            font-size: 0.65rem;
-            color: rgba(245, 195, 150, 0.8);
-            margin-bottom: 8px;
-            line-height: 1.4;
+            font-size: 0.7rem;
+            color: rgba(255, 235, 200, 0.8);
+            margin-bottom: 12px;
+            line-height: 1.5;
         }
 
-        /* Action Buttons Row */
+        /* Action Buttons */
         .action-buttons {
             display: flex;
-            gap: 10px;
-            margin: 10px 0;
+            gap: 12px;
+            margin: 12px 0;
         }
 
         .map-btn, .share-btn {
@@ -382,41 +369,42 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            background: linear-gradient(135deg, #e8aa78, #d48c5a);
+            background: linear-gradient(135deg, #ffcd7e, #f5b642);
             border: none;
-            padding: 8px 12px;
-            border-radius: 50px;
-            color: #2c1810;
+            padding: 12px 16px;
+            border-radius: 60px;
+            color: #0a0a2a;
             font-weight: 700;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.2s;
             font-family: inherit;
-            box-shadow: 0 4px 12px rgba(232, 170, 120, 0.3);
+            box-shadow: 0 6px 20px rgba(255, 205, 126, 0.3);
         }
 
         .share-btn {
-            background: rgba(232, 170, 120, 0.2);
-            border: 1px solid rgba(232, 170, 120, 0.5);
-            color: #e8aa78;
+            background: rgba(255, 215, 120, 0.15);
+            border: 1px solid rgba(255, 215, 120, 0.5);
+            color: #ffdf9c;
+            box-shadow: none;
         }
 
         .map-btn:active, .share-btn:active {
-            transform: scale(0.96);
+            transform: scale(0.97);
         }
 
         /* Decorative Divider */
         .decorative-divider {
             text-align: center;
-            margin: 12px 0 8px;
+            margin: 16px 0 8px;
             position: relative;
         }
 
         .decorative-divider span {
-            font-size: 0.75rem;
-            color: #e8aa78;
-            background: rgba(45, 30, 22, 0.8);
-            padding: 0 12px;
+            font-size: 0.8rem;
+            color: #ffcd7e;
+            background: rgba(10, 10, 42, 0.6);
+            padding: 0 15px;
             display: inline-block;
         }
 
@@ -427,41 +415,41 @@
             left: 0;
             right: 0;
             height: 1px;
-            background: linear-gradient(90deg, transparent, #e8aa78, #f5c396, #e8aa78, transparent);
+            background: linear-gradient(90deg, transparent, #ffcd7e, #ffdf9c, #ffcd7e, transparent);
             z-index: -1;
         }
 
         /* Footer */
         .footer {
             text-align: center;
-            margin-top: 10px;
-            padding-top: 6px;
-            border-top: 1px solid rgba(232, 170, 120, 0.25);
+            margin-top: 16px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 215, 120, 0.2);
         }
 
         .footer p {
-            font-size: 0.55rem;
-            color: rgba(245, 195, 150, 0.6);
+            font-size: 0.6rem;
+            color: rgba(255, 235, 200, 0.5);
         }
 
         /* Sound Toggle */
         .sound-toggle {
             position: fixed;
-            bottom: 12px;
-            left: 12px;
-            background: rgba(45, 30, 22, 0.85);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(232, 170, 120, 0.5);
+            bottom: 16px;
+            left: 16px;
+            background: rgba(10, 10, 42, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 215, 120, 0.4);
             border-radius: 50px;
-            padding: 5px 12px;
+            padding: 6px 14px;
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
             cursor: pointer;
             z-index: 100;
             font-family: 'Cairo', sans-serif;
-            font-size: 0.6rem;
-            color: #e8aa78;
+            font-size: 0.65rem;
+            color: #ffcd7e;
             transition: all 0.2s;
         }
 
@@ -472,21 +460,21 @@
         /* Toast */
         .toast {
             position: fixed;
-            bottom: 75px;
+            bottom: 85px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: linear-gradient(135deg, #e8aa78, #d48c5a);
-            color: #2c1810;
-            padding: 8px 18px;
-            border-radius: 50px;
-            font-size: 0.7rem;
+            background: linear-gradient(135deg, #ffcd7e, #f5b642);
+            color: #0a0a2a;
+            padding: 10px 20px;
+            border-radius: 60px;
+            font-size: 0.75rem;
             font-weight: 600;
             opacity: 0;
             transition: all 0.3s ease;
             z-index: 200;
             pointer-events: none;
             white-space: nowrap;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
         }
 
         .toast.show {
@@ -495,38 +483,51 @@
         }
 
         /* Responsive */
-        @media (max-width: 450px) {
+        @media (max-width: 480px) {
             .content {
-                padding: 14px 14px 18px;
+                padding: 20px 16px;
             }
             .title h1 {
-                font-size: 1.4rem;
+                font-size: 1.8rem;
             }
             .countdown-number {
-                font-size: 1.1rem;
-                padding: 4px 8px;
+                font-size: 1.3rem;
+                padding: 6px 8px;
+                min-width: 50px;
+            }
+            .countdown-item {
+                min-width: 55px;
+            }
+            .datetime-value {
+                font-size: 0.75rem;
+            }
+            .map-btn, .share-btn {
+                padding: 10px 12px;
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .countdown {
+                gap: 8px;
             }
             .countdown-item {
                 min-width: 45px;
             }
-            .datetime-value {
-                font-size: 0.7rem;
-            }
-            .map-btn, .share-btn {
-                padding: 6px 10px;
-                font-size: 0.7rem;
+            .countdown-number {
+                font-size: 1.1rem;
+                padding: 4px 6px;
             }
         }
     </style>
 </head>
 <body>
     <div class="full-screen">
-        <div class="particles" id="particles"></div>
-        <div class="warm-orb"></div>
-        <div class="warm-orb warm-orb-2"></div>
+        <div class="stars" id="stars"></div>
+        <div class="nebula"></div>
+        <div class="nebula nebula-2"></div>
 
         <div class="invitation-card">
-            <div class="gold-line"></div>
             <div class="content">
                 <!-- Header Icon -->
                 <div class="header-icon">
@@ -580,17 +581,13 @@
                 <div class="datetime-section">
                     <div class="datetime-item">
                         <div class="datetime-icon">📅</div>
-                        <div class="datetime-text">
-                            <div class="datetime-label">التاريخ</div>
-                            <div class="datetime-value" id="event-date">الجمعة 28 مارس</div>
-                        </div>
+                        <div class="datetime-label">التاريخ</div>
+                        <div class="datetime-value" id="event-date">الجمعة 28 مارس</div>
                     </div>
                     <div class="datetime-item">
                         <div class="datetime-icon">⏰</div>
-                        <div class="datetime-text">
-                            <div class="datetime-label">الوقت</div>
-                            <div class="datetime-value" id="event-time">8:00 مساءً</div>
-                        </div>
+                        <div class="datetime-label">الوقت</div>
+                        <div class="datetime-value" id="event-time">8:00 مساءً</div>
                     </div>
                 </div>
 
@@ -621,7 +618,6 @@
                     <p>تصميم: سعود</p>
                 </div>
             </div>
-            <div class="gold-line"></div>
         </div>
     </div>
 
@@ -701,20 +697,20 @@
         document.addEventListener('touchstart', enableAudio);
         document.addEventListener('click', enableAudio);
 
-        // ==================== Create Particles ====================
-        function createParticles() {
-            const container = document.getElementById('particles');
-            for (let i = 0; i < 40; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                const size = Math.random() * 5 + 2;
-                particle.style.width = size + 'px';
-                particle.style.height = size + 'px';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 8 + 's';
-                particle.style.animationDuration = Math.random() * 6 + 5 + 's';
-                container.appendChild(particle);
+        // ==================== Create Stars ====================
+        function createStars() {
+            const container = document.getElementById('stars');
+            for (let i = 0; i < 80; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                const size = Math.random() * 4 + 1;
+                star.style.width = size + 'px';
+                star.style.height = size + 'px';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 5 + 's';
+                star.style.animationDuration = Math.random() * 3 + 2 + 's';
+                container.appendChild(star);
             }
         }
 
@@ -807,7 +803,7 @@
 
         // ==================== Initialize ====================
         document.addEventListener('DOMContentLoaded', () => {
-            createParticles();
+            createStars();
             setEventDate();
             updateCountdown();
             setInterval(updateCountdown, 1000);
