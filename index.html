@@ -127,40 +127,20 @@
             left: -10px;
         }
 
+        /* Subtitle - No borders */
         .subtitle {
             text-align: center;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+            padding: 8px 12px;
         }
 
         .subtitle p {
             color: #2c2c2c;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
+            line-height: 1.6;
         }
 
-        /* Invitation Message */
-        .message {
-            background: #fdf8f5;
-            border-radius: 28px;
-            padding: 12px 16px;
-            margin: 8px 0;
-            text-align: center;
-            border: 1px solid #f5e0e0;
-        }
-
-        .message h2 {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: #2c2c2c;
-            margin-bottom: 6px;
-        }
-
-        .message p {
-            font-size: 0.75rem;
-            line-height: 1.5;
-            color: #2c2c2c;
-        }
-
-        /* Date & Time Section - Unified (Now First) */
+        /* Date & Time Section - Unified */
         .datetime-section {
             background: #fdf8f5;
             border-radius: 28px;
@@ -216,7 +196,7 @@
             color: #2c2c2c;
         }
 
-        /* Countdown Timer - Now After Date */
+        /* Countdown Timer */
         .countdown-section {
             background: #fdf8f5;
             border-radius: 28px;
@@ -379,6 +359,9 @@
             .date-secondary {
                 font-size: 0.7rem;
             }
+            .subtitle p {
+                font-size: 0.75rem;
+            }
             .map-btn, .share-btn {
                 padding: 8px 10px;
                 font-size: 0.7rem;
@@ -402,9 +385,9 @@
             .content {
                 padding: 8px 20px;
             }
-            .message {
-                padding: 8px 12px;
-                margin: 6px 0;
+            .subtitle {
+                margin-bottom: 12px;
+                padding: 4px 12px;
             }
             .datetime-section {
                 padding: 6px 10px;
@@ -419,9 +402,6 @@
             }
             .host-name {
                 margin: 4px 0 6px;
-            }
-            .subtitle {
-                margin-bottom: 10px;
             }
             .designer-credit {
                 margin-bottom: 6px;
@@ -448,17 +428,12 @@
                     <p>منيرة الحربي</p>
                 </div>
 
+                <!-- Subtitle with invitation message - No borders -->
                 <div class="subtitle">
-                    <p>بكل حب وسعادة أدعوكم لمشاركتنا أمسية مميزة</p>
+                    <p>بكل حب وسعادة أدعوكم لمشاركتنا أمسية مميزة<br>لتشريفنا بحضور عشاء خاص في منزلي<br>نتشرف بوجودكم معنا</p>
                 </div>
 
-                <!-- Invitation Message -->
-                <div class="message">
-                    <h2>يسرني دعوتكم</h2>
-                    <p>لتشريفنا بحضور عشاء خاص في منزلي<br>نتشرف بوجودكم معنا</p>
-                </div>
-
-                <!-- Date & Time Section - Unified (Now First) -->
+                <!-- Date & Time Section - Unified -->
                 <div class="datetime-section">
                     <div class="date-header">📅 التاريخ</div>
                     <div class="date-main" id="gregorian-date">الخميس 7 مايو 2026</div>
@@ -469,7 +444,7 @@
                     </div>
                 </div>
 
-                <!-- Countdown Timer (Now After Date) -->
+                <!-- Countdown Timer -->
                 <div class="countdown-section">
                     <div class="countdown-title">⏳ المتبقي على الموعد</div>
                     <div class="countdown" id="countdown">
@@ -549,7 +524,7 @@
         function shareInvitation() {
             const gregorianDate = document.getElementById('gregorian-date').textContent;
             const hijriDate = document.getElementById('hijri-date').textContent;
-            const shareText = `🍽️ دعوة عشاء من منيرة الحربي\n\nيسرني دعوتكم لحضور عشاء خاص في منزلي\n📍 الدمام، حي الشاطئ، شارع الأمير محمد بن فهد\n📅 ${gregorianDate}\n📅 ${hijriDate}\n⏰ 8:00 مساءً\n\nنتمنى تشريفكم 🌟`;
+            const shareText = `🍽️ دعوة عشاء من منيرة الحربي\n\nبكل حب وسعادة أدعوكم لمشاركتنا أمسية مميزة\nلتشريفنا بحضور عشاء خاص في منزلي\nنتشرف بوجودكم معنا\n\n📍 الدمام، حي الشاطئ، شارع الأمير محمد بن فهد\n📅 ${gregorianDate}\n📅 ${hijriDate}\n⏰ 8:00 مساءً\n\nنتمنى تشريفكم 🌟`;
             
             if (navigator.share) {
                 navigator.share({
